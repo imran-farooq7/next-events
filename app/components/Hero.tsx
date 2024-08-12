@@ -26,9 +26,7 @@ export default function Hero() {
 						</h1>
 						<p className="mb-6 text-white mt-4 text-xl lg:text-2xl">
 							Browse more than{" "}
-							<span className="font-bold text-accent italic underline">
-								10,000 events
-							</span>{" "}
+							<span className="font-bold italic underline">10,000 events</span>{" "}
 							around you
 						</p>
 						<form action="">
