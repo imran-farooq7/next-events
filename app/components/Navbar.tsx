@@ -11,11 +11,14 @@ import {
 } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
 export default function Navbar() {
+	const pathName = usePathname();
 	const user = false;
 	return (
 		<Disclosure as="nav" className="bg-white shadow">
@@ -29,19 +32,53 @@ export default function Navbar() {
 										NextEvent
 									</Link>
 								</div>
-								<div className="hidden sm:ml-6 sm:flex sm:space-x-8">
+								<div className="hidden sm:ml-6 sm:flex sm:space-x-8 items-center">
 									{/* Current: "border-indigo-500 text-gray-900", Default: "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700" */}
 									<Link
 										href="/"
-										className="inline-flex items-center border-b-2 border-indigo-500 px-1 pt-1 text-sm font-medium text-gray-900"
+										className={`"inline-flex relative items-center px-1 pt-1 text-sm font-medium text-gray-900" ${
+											pathName === "/"
+												? "text-indigo-600"
+												: "border-transparent"
+										}`}
 									>
 										Home
+										{pathName === "/" && (
+											<motion.div
+												initial={{ width: 0 }}
+												exit={{ width: 0 }}
+												animate={{
+													width: "82%",
+													transition: {
+														duration: 0.3,
+													},
+												}}
+												className="h-1 bg-indigo-500 w-[82%] absolute -bottom-1"
+											></motion.div>
+										)}
 									</Link>
 									<Link
 										href="/events"
-										className="inline-flex items-center border-b-2 border-transparent px-1 pt-1 text-sm font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
+										className={`"inline-flex relative items-center px-1 pt-1 text-sm font-medium text-gray-900" ${
+											pathName === "/events"
+												? " text-indigo-600"
+												: "border-transparent"
+										}`}
 									>
 										Events
+										{pathName === "/events" && (
+											<motion.div
+												initial={{ width: 0 }}
+												exit={{ width: 0 }}
+												animate={{
+													width: "82%",
+													transition: {
+														duration: 0.3,
+													},
+												}}
+												className="h-1 bg-indigo-500 w-[82%] absolute -bottom-1"
+											></motion.div>
+										)}
 									</Link>
 								</div>
 							</div>
