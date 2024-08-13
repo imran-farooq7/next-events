@@ -1,3 +1,5 @@
+import SearchForm from "./SearchForm";
+
 export default function Hero() {
 	return (
 		<div className="bg-gray-900">
@@ -29,16 +31,8 @@ export default function Hero() {
 							<span className="font-bold italic underline">10,000 events</span>{" "}
 							around you
 						</p>
-						<form action="">
-							<input
-								name="search"
-								type="search"
-								required
-								placeholder="Search events in any city..."
-								className="block px-6 w-full rounded-2xl border-0 py-4 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-black focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-							/>
-						</form>
 					</div>
+					<SearchForm />
 				</div>
 				<div
 					className="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
