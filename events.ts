@@ -1,18 +1,4 @@
-const events = [
-	{
-		id: 1,
-		name: "DJ Practice Session",
-		slug: "dj-practice-session",
-		city: "Austin",
-		location: "Austin Music Hall",
-		date: "2030-10-12T00:00:00.000Z",
-		organizerName: "DJ Inc.",
-		imageUrl:
-			"https://images.unsplash.com/photo-1642178225043-f299072af862?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
-		description:
-			"Join us for an immersive DJ practice session at the DJ Beats Workshop! Whether you're a beginner or an experienced DJ, this event is tailored for you. Showcase your skills during our open decks session and receive applause and feedback from a supportive audience.",
-		isFeatured: true,
-	},
+export const events = [
 	{
 		id: 2,
 		name: "Mumbai Music Conference",
@@ -22,7 +8,7 @@ const events = [
 		date: "2030-11-05T00:00:00.000Z",
 		organizerName: "Mumbai Music Alliance",
 		imageUrl:
-			"https://images.unsplash.com/photo-1561466074-d91d91f83148?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://plus.unsplash.com/premium_photo-1661306437817-8ab34be91e0c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Explore the future of music at the Mumbai Music Conference. Industry experts and musicians come together to discuss trends, technology, and the business of music. Network with professionals and attend workshops to elevate your music career.",
 		isFeatured: true,
@@ -36,7 +22,7 @@ const events = [
 		date: "2030-12-20T00:00:00.000Z",
 		organizerName: "Delhi Event Planners",
 		imageUrl:
-			"https://images.unsplash.com/photo-1529878567033-5a8f1f11ba95?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1520110120835-c96534a4c984?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Join us for an unforgettable Social Night in Delhi. Enjoy live music, delicious food, and great company. Perfect for networking and making new friends in the city's vibrant social scene.",
 		isFeatured: false,
@@ -50,7 +36,7 @@ const events = [
 		date: "2030-09-30T00:00:00.000Z",
 		organizerName: "Chennai Innovators",
 		imageUrl:
-			"https://images.unsplash.com/photo-1508594627373-8a281e0d3a1b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1520110120835-c96534a4c984?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Explore cutting-edge technology at the Chennai Tech Expo. From AI to robotics, this event showcases the latest innovations. Attend keynotes, network with tech leaders, and experience the future of technology.",
 		isFeatured: true,
@@ -78,7 +64,7 @@ const events = [
 		date: "2030-07-15T00:00:00.000Z",
 		organizerName: "Hyderabad Foodies",
 		imageUrl:
-			"https://images.unsplash.com/photo-1556912167-f556f1f4b7a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1560479284-b69bb03b5e39?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Indulge in a culinary adventure at the Hyderabad Food Festival. Taste local and international cuisines, watch live cooking demos, and meet top chefs. A perfect event for food lovers of all ages.",
 		isFeatured: true,
@@ -106,7 +92,7 @@ const events = [
 		date: "2030-11-15T00:00:00.000Z",
 		organizerName: "Kolkata Literary Society",
 		imageUrl:
-			"https://images.unsplash.com/photo-1531362699072-836a53b7ebd6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1499332347742-4946bddc7d94?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Celebrate the power of words at the Kolkata Literature Festival. Meet renowned authors, attend book readings, and participate in literary discussions. This event is a haven for book lovers and writers alike.",
 		isFeatured: true,
@@ -162,7 +148,7 @@ const events = [
 		date: "2030-10-15T00:00:00.000Z",
 		organizerName: "Kerala Culture Association",
 		imageUrl:
-			"https://images.unsplash.com/photo-1546238232-20216dec9725?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1720238281873-51965cef637d?q=80&w=1931&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Experience the rich cultural heritage of Kerala at the Kerala Cultural Fest. Enjoy traditional dance performances, music, and local crafts. A perfect event for those looking to explore Kerala's vibrant culture.",
 		isFeatured: true,
@@ -190,7 +176,7 @@ const events = [
 		date: "2030-08-18T00:00:00.000Z",
 		organizerName: "Indore Cinephiles",
 		imageUrl:
-			"https://images.unsplash.com/photo-1551827338-d28a40aaa72f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://plus.unsplash.com/premium_photo-1710961232986-36cead00da3c?q=80&w=1984&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Celebrate cinema at the Indore Film Festival. Watch screenings of independent films, participate in discussions, and meet filmmakers. A must-attend event for movie enthusiasts and aspiring filmmakers.",
 		isFeatured: true,
@@ -218,7 +204,7 @@ const events = [
 		date: "2030-11-22T00:00:00.000Z",
 		organizerName: "Jaipur Culinary Club",
 		imageUrl:
-			"https://images.unsplash.com/photo-1502997050256-4f24de51b002?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://plus.unsplash.com/premium_photo-1664206613168-32650e8b63a0?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Indulge in a variety of cuisines at the Jaipur Food Carnival. Sample dishes from local and international chefs, enjoy cooking demonstrations, and participate in food competitions. A paradise for food lovers.",
 		isFeatured: true,
@@ -246,7 +232,7 @@ const events = [
 		date: "2030-09-28T00:00:00.000Z",
 		organizerName: "Ranchi Adventure Club",
 		imageUrl:
-			"https://images.unsplash.com/photo-1531746790731-e6c2878a6c2a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1444210971048-6130cf0c46cf?q=80&w=2073&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Get your adrenaline pumping at the Ranchi Adventure Fest. Experience thrilling activities like rock climbing, zip-lining, and more. Perfect for adventure enthusiasts and families looking for excitement.",
 		isFeatured: true,
