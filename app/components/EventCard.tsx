@@ -5,7 +5,7 @@ import Image from "next/image";
 const EventCard = ({ event }: { event: NextEvent }) => {
 	return (
 		<div key={event.id}>
-			<div className="relative">
+			<div className="relative hover:scale-105 transition-all ease-in-out">
 				<div className="relative h-72 w-full overflow-hidden rounded-lg">
 					<Image
 						src={event.imageUrl}
