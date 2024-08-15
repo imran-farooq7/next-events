@@ -1,4 +1,6 @@
-export const events = [
+import { NextEvent } from "./lib/types";
+
+export const events: NextEvent[] = [
 	{
 		id: 2,
 		name: "Mumbai Music Conference",
@@ -22,7 +24,7 @@ export const events = [
 		date: "2030-12-20T00:00:00.000Z",
 		organizerName: "Delhi Event Planners",
 		imageUrl:
-			"https://images.unsplash.com/photo-1520110120835-c96534a4c984?q=80&w=2067&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+			"https://images.unsplash.com/photo-1496449903678-68ddcb189a24?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Join us for an unforgettable Social Night in Delhi. Enjoy live music, delicious food, and great company. Perfect for networking and making new friends in the city's vibrant social scene.",
 		isFeatured: false,
@@ -50,7 +52,7 @@ export const events = [
 		date: "2030-08-25T00:00:00.000Z",
 		organizerName: "Bangalore Entrepreneurs",
 		imageUrl:
-			"https://images.unsplash.com/photo-1532384814961-9f4f0fa45b7d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1556761175-5973dc0f32e7?q=80&w=1932&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Connect with fellow entrepreneurs at the Bangalore Startup Meetup. Share ideas, find potential partners, and get inspired by success stories. This event is a must for anyone in the startup ecosystem.",
 		isFeatured: false,
@@ -78,7 +80,7 @@ export const events = [
 		date: "2030-10-10T00:00:00.000Z",
 		organizerName: "Pune Wellness Collective",
 		imageUrl:
-			"https://images.unsplash.com/photo-1580842317374-27dd0494fcd3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://plus.unsplash.com/premium_photo-1683133269843-09a177048cef?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Rejuvenate your mind and body at the Pune Yoga Retreat. Experience various yoga practices, meditation sessions, and wellness workshops. Whether you're a beginner or a seasoned yogi, this retreat offers a peaceful escape from the hustle and bustle.",
 		isFeatured: false,
@@ -106,7 +108,7 @@ export const events = [
 		date: "2030-12-05T00:00:00.000Z",
 		organizerName: "Jaipur Art Collective",
 		imageUrl:
-			"https://images.unsplash.com/photo-1529220359938-4ad58b9f0e5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://plus.unsplash.com/premium_photo-1682088715035-11e11e28f50f?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Discover the vibrant art scene of Jaipur at this exclusive Art Exhibition. View works by local and international artists, and engage in art talks and workshops. Perfect for art enthusiasts and collectors.",
 		isFeatured: false,
@@ -162,7 +164,7 @@ export const events = [
 		date: "2030-09-20T00:00:00.000Z",
 		organizerName: "Lucknow Artisan Society",
 		imageUrl:
-			"https://images.unsplash.com/photo-1545069067-d63c54e2f0d2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1641443640609-39b661f9aacc?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Discover exquisite handmade crafts at the Lucknow Craft Fair. From textiles to pottery, this event showcases the best of local craftsmanship. Perfect for finding unique gifts and supporting local artisans.",
 		isFeatured: false,
@@ -190,7 +192,7 @@ export const events = [
 		date: "2030-10-05T00:00:00.000Z",
 		organizerName: "Chandigarh Fashion Council",
 		imageUrl:
-			"https://images.unsplash.com/photo-1533670809214-346b0b2967d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=100",
+			"https://images.unsplash.com/photo-1554882195-8cf792f9a571?q=80&w=2071&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
 		description:
 			"Witness the latest trends at Chandigarh Fashion Week. Top designers and models come together to showcase cutting-edge fashion. Attend runway shows, fashion talks, and exclusive after-parties.",
 		isFeatured: false,
@@ -245,5 +247,10 @@ export const events = [
 		location: "Surat Concert Grounds",
 		date: "2030-10-30T00:00:00.000Z",
 		organizerName: "Surat Sound Collective",
+		imageUrl:
+			"https://images.unsplash.com/photo-1636847458484-653f9d40011a?q=80&w=2072&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+		description:
+			"Celebrate cinema at the Indore Film Festival. Watch screenings of independent films, participate in discussions, and meet filmmakers. A must-attend event for movie enthusiasts and aspiring filmmakers.",
+		isFeatured: false,
 	},
 ];
