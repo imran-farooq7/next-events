@@ -1,6 +1,7 @@
 import Button from "@/app/components/Button";
 import { events } from "@/events";
 import { formatDate } from "@/lib/helpers";
+import delay from "delay";
 import Image from "next/image";
 
 interface Props {
@@ -8,8 +9,9 @@ interface Props {
 		slug: string;
 	};
 }
-const EventDetailsPage = ({ params }: Props) => {
+const EventDetailsPage = async ({ params }: Props) => {
 	const event = events.find((event) => event.slug === params.slug);
+	await delay(2000);
 	return (
 		<div className="flex max-w-7xl mx-auto flex-col md:flex-row justify-between gap-12 p-12 text-white">
 			<Image
