@@ -1,12 +1,21 @@
 import Events from "@/app/components/Events";
 import { Suspense } from "react";
 import Loading from "../loading";
+import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
 	params: {
 		city: string;
 	};
 }
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const city = params.city;
+
+	return {
+		title: `Events in ${city.charAt(0).toLocaleUpperCase() + city.slice(1)}`,
+	};
+}
+
 const EventsByCityPage = ({ params }: Props) => {
 	// if (eventsByCity.length === 0) {
 	// 	return (

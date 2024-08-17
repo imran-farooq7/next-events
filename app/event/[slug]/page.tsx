@@ -3,10 +3,18 @@ import { events } from "@/events";
 import { formatDate } from "@/lib/helpers";
 import delay from "delay";
 import Image from "next/image";
+import { Metadata } from "next/types";
 
 interface Props {
 	params: {
 		slug: string;
+	};
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+	const event = events.find((event) => event.slug === params.slug);
+
+	return {
+		title: event?.name,
 	};
 }
 const EventDetailsPage = async ({ params }: Props) => {
