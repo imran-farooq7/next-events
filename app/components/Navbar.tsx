@@ -13,13 +13,15 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import { signIn, signOut } from "next-auth/react";
+import { User } from "next-auth";
+import Image from "next/image";
 
 function classNames(...classes: string[]) {
 	return classes.filter(Boolean).join(" ");
 }
-export default function Navbar() {
+export default function Navbar({ user }: { user: User }) {
 	const pathName = usePathname();
-	const user = false;
 	return (
 		<Disclosure as="nav" className="bg-white shadow">
 			{({ open }) => (
@@ -90,10 +92,12 @@ export default function Navbar() {
 											<MenuButton className="relative flex rounded-full bg-white text-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
 												<span className="absolute -inset-1.5" />
 												<span className="sr-only">Open user menu</span>
-												<img
-													className="h-8 w-8 rounded-full"
-													src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-													alt=""
+												<Image
+													width={40}
+													height={40}
+													className="rounded-full object-contain"
+													src={user?.image!}
+													alt="avatar"
 												/>
 											</MenuButton>
 										</div>
@@ -122,15 +126,15 @@ export default function Navbar() {
 
 												<MenuItem>
 													{({ focus }) => (
-														<a
-															href="#"
+														<button
+															onClick={() => signOut()}
 															className={classNames(
 																focus ? "bg-gray-100" : "",
-																"block px-4 py-2 text-sm text-gray-700"
+																"block px-4 w-full text-left py-2 text-sm text-gray-700"
 															)}
 														>
 															Sign out
-														</a>
+														</button>
 													)}
 												</MenuItem>
 											</MenuItems>
@@ -141,6 +145,7 @@ export default function Navbar() {
 									<button
 										type="button"
 										className="rounded-md bg-indigo-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+										onClick={() => signIn("github")}
 									>
 										Sign in
 									</button>
@@ -161,60 +166,64 @@ export default function Navbar() {
 						</div>
 					</div>
 
-					<DisclosurePanel className="sm:hidden">
-						<div className="space-y-1 pb-3 pt-2">
-							{/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
-							<DisclosureButton
-								as="a"
-								href="#"
-								className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
-							>
-								Home
-							</DisclosureButton>
-							<DisclosureButton
-								as="a"
-								href="#"
-								className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
-							>
-								All Events
-							</DisclosureButton>
-						</div>
-						<div className="border-t border-gray-200 pb-3 pt-4">
-							<div className="flex items-center px-4">
-								<div className="flex-shrink-0">
-									<img
-										className="h-10 w-10 rounded-full"
-										src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-										alt=""
-									/>
-								</div>
-								<div className="ml-3">
-									<div className="text-base font-medium text-gray-800">
-										Tom Cook
-									</div>
-									<div className="text-sm font-medium text-gray-500">
-										tom@example.com
-									</div>
-								</div>
-							</div>
-							<div className="mt-3 space-y-1">
+					{user && (
+						<DisclosurePanel className="sm:hidden">
+							<div className="space-y-1 pb-3 pt-2">
+								{/* Current: "bg-indigo-50 border-indigo-500 text-indigo-700", Default: "border-transparent text-gray-500 hover:bg-gray-50 hover:border-gray-300 hover:text-gray-700" */}
 								<DisclosureButton
 									as="a"
 									href="#"
-									className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+									className="block border-l-4 border-indigo-500 bg-indigo-50 py-2 pl-3 pr-4 text-base font-medium text-indigo-700"
 								>
-									My Events
+									Home
 								</DisclosureButton>
 								<DisclosureButton
 									as="a"
 									href="#"
-									className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+									className="block border-l-4 border-transparent py-2 pl-3 pr-4 text-base font-medium text-gray-500 hover:border-gray-300 hover:bg-gray-50 hover:text-gray-700"
 								>
-									Sign out
+									All Events
 								</DisclosureButton>
 							</div>
-						</div>
-					</DisclosurePanel>
+							<div className="border-t border-gray-200 pb-3 pt-4">
+								<div className="flex items-center px-4">
+									<div className="flex-shrink-0">
+										<Image
+											className="object-contain rounded-full"
+											width={40}
+											height={40}
+											src={user.image!}
+											alt="avatar"
+										/>
+									</div>
+									<div className="ml-3">
+										<div className="text-base font-medium text-gray-800">
+											{user.name}
+										</div>
+										<div className="text-sm font-medium text-gray-500">
+											{user.email}
+										</div>
+									</div>
+								</div>
+								<div className="mt-3 space-y-1">
+									<DisclosureButton
+										as="a"
+										href="#"
+										className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+									>
+										My Events
+									</DisclosureButton>
+									<DisclosureButton
+										as="button"
+										onClick={() => signOut()}
+										className="block px-4 py-2 text-base font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-800"
+									>
+										Sign out
+									</DisclosureButton>
+								</div>
+							</div>
+						</DisclosurePanel>
+					)}
 				</>
 			)}
 		</Disclosure>
