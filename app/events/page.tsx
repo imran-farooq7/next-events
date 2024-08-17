@@ -1,14 +1,15 @@
-import { events } from "@/events";
+import { Suspense } from "react";
 import Events from "../components/Events";
-import delay from "delay";
-const EventsPage = async () => {
-	await delay(2000);
+import Loading from "./loading";
+const EventsPage = () => {
 	return (
 		<main className="mx-auto py-12 max-w-7xl px-4 sm:px-6 lg:px-8 flex flex-col items-center">
 			<h1 className="mb-6 mt-4 text-xl font-bold lg:text-5xl text-white">
 				All Events
 			</h1>
-			<Events events={events} />
+			<Suspense fallback={<Loading />}>
+				<Events isFeatured={false} />
+			</Suspense>
 		</main>
 	);
 };
