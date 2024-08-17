@@ -1,10 +1,25 @@
+"use client";
 import { formatDate } from "@/lib/helpers";
 import { NextEvent } from "@/lib/types";
 import Image from "next/image";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 
 const EventCard = ({ event }: { event: NextEvent }) => {
+	const ref = useRef(null);
+	const { scrollYProgress } = useScroll({
+		target: ref,
+		offset: ["0 1", "1.5 1"],
+	});
+	const scaleIt = useTransform(scrollYProgress, [0, 1], [0.7, 1]);
+	const opacityIt = useTransform(scrollYProgress, [0, 1], [0.3, 1]);
 	return (
-		<div key={event.id}>
+		<motion.div
+			key={event.id}
+			ref={ref}
+			style={{ scale: scaleIt, opacity: opacityIt }}
+			initial={{ opacity: 0, scale: 0.8 }}
+		>
 			<div className="relative hover:scale-105 transition-all ease-in-out">
 				<div className="relative h-72 w-full overflow-hidden rounded-lg">
 					<Image
@@ -29,7 +44,7 @@ const EventCard = ({ event }: { event: NextEvent }) => {
 					</p>
 				</div>
 			</div>
-		</div>
+		</motion.div>
 	);
 };
 
