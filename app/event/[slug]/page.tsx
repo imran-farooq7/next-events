@@ -2,6 +2,7 @@ import Button from "@/app/components/Button";
 import { formatDate } from "@/lib/helpers";
 import prisma from "@/prisma/db";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 import { Metadata } from "next/types";
 
 interface Props {
@@ -26,6 +27,9 @@ const EventDetailsPage = async ({ params }: Props) => {
 			slug: params.slug,
 		},
 	});
+	if (!event) {
+		return notFound();
+	}
 
 	return (
 		<div className="flex max-w-7xl mx-auto flex-col md:flex-row justify-between gap-12 p-12 text-white">

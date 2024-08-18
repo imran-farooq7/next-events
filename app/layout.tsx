@@ -20,7 +20,7 @@ export default async function RootLayout({
 	const session = await auth();
 	return (
 		<html lang="en">
-			<body className={`${inter.className} bg-gray-950`}>
+			<body className={`${inter.className} bg-gray-950 h-screen`}>
 				<Navbar user={session?.user!} />
 				{children}
 			</body>
