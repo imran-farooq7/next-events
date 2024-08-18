@@ -1,8 +1,7 @@
-import { NextEvent } from "./lib/types";
-
-export const events: NextEvent[] = [
+import prisma from "./db";
+export const events = [
 	{
-		id: 2,
+		id: 1,
 		name: "Mumbai Music Conference",
 		slug: "mumbai-music-conference",
 		city: "Mumbai",
@@ -16,7 +15,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 3,
+		id: 2,
 		name: "Delhi Social Night",
 		slug: "delhi-social-night",
 		city: "Delhi",
@@ -30,7 +29,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 4,
+		id: 3,
 		name: "Chennai Tech Expo",
 		slug: "chennai-tech-expo",
 		city: "Chennai",
@@ -44,7 +43,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 5,
+		id: 4,
 		name: "Bangalore Startup Meetup",
 		slug: "bangalore-startup-meetup",
 		city: "Bangalore",
@@ -58,7 +57,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 6,
+		id: 5,
 		name: "Hyderabad Food Festival",
 		slug: "hyderabad-food-festival",
 		city: "Hyderabad",
@@ -72,7 +71,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 7,
+		id: 6,
 		name: "Pune Yoga Retreat",
 		slug: "pune-yoga-retreat",
 		city: "Pune",
@@ -86,7 +85,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 8,
+		id: 7,
 		name: "Kolkata Literature Festival",
 		slug: "kolkata-literature-festival",
 		city: "Kolkata",
@@ -100,7 +99,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 9,
+		id: 8,
 		name: "Jaipur Art Exhibition",
 		slug: "jaipur-art-exhibition",
 		city: "Jaipur",
@@ -114,7 +113,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 10,
+		id: 9,
 		name: "Ahmedabad Business Summit",
 		slug: "ahmedabad-business-summit",
 		city: "Ahmedabad",
@@ -128,7 +127,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 11,
+		id: 10,
 		name: "Goa Beach Party",
 		slug: "goa-beach-party",
 		city: "Goa",
@@ -142,7 +141,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 12,
+		id: 11,
 		name: "Kerala Cultural Fest",
 		slug: "kerala-cultural-fest",
 		city: "Kochi",
@@ -156,7 +155,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 13,
+		id: 12,
 		name: "Lucknow Craft Fair",
 		slug: "lucknow-craft-fair",
 		city: "Lucknow",
@@ -170,7 +169,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 14,
+		id: 13,
 		name: "Indore Film Festival",
 		slug: "indore-film-festival",
 		city: "Indore",
@@ -184,7 +183,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 15,
+		id: 14,
 		name: "Chandigarh Fashion Week",
 		slug: "chandigarh-fashion-week",
 		city: "Chandigarh",
@@ -198,7 +197,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 16,
+		id: 15,
 		name: "Jaipur Food Carnival",
 		slug: "jaipur-food-carnival",
 		city: "Jaipur",
@@ -212,7 +211,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 17,
+		id: 16,
 		name: "Bhopal Book Fair",
 		slug: "bhopal-book-fair",
 		city: "Bhopal",
@@ -226,7 +225,7 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 	{
-		id: 18,
+		id: 17,
 		name: "Ranchi Adventure Fest",
 		slug: "ranchi-adventure-fest",
 		city: "Ranchi",
@@ -240,7 +239,7 @@ export const events: NextEvent[] = [
 		isFeatured: true,
 	},
 	{
-		id: 19,
+		id: 18,
 		name: "Surat Music Festival",
 		slug: "surat-music-festival",
 		city: "Surat",
@@ -254,3 +253,28 @@ export const events: NextEvent[] = [
 		isFeatured: false,
 	},
 ];
+
+async function main() {
+	console.log(`Start seeding ...`);
+
+	for (const event of events) {
+		const result = await prisma.event.upsert({
+			where: { id: event.id },
+			update: {},
+			create: event,
+		});
+		console.log(`Created event with id: ${result.id}`);
+	}
+
+	console.log(`Seeding finished.`);
+}
+
+main()
+	.then(async () => {
+		await prisma.$disconnect();
+	})
+	.catch(async (e) => {
+		console.error(e);
+		await prisma.$disconnect();
+		process.exit(1);
+	});

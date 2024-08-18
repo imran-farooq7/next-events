@@ -1,11 +1,11 @@
 "use client";
 import { formatDate } from "@/lib/helpers";
-import { NextEvent } from "@/lib/types";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { Event } from "@prisma/client";
 
-const EventCard = ({ event }: { event: NextEvent }) => {
+const EventCard = ({ event }: { event: Event }) => {
 	const ref = useRef(null);
 	const { scrollYProgress } = useScroll({
 		target: ref,

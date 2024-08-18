@@ -1,24 +1,36 @@
-import { NextEvent } from "@/lib/types";
-import EventCard from "./EventCard";
-import Link from "next/link";
+import prisma from "@/prisma/db";
+import { Event } from "@prisma/client";
 import delay from "delay";
-import { events } from "@/events";
+import Link from "next/link";
+import EventCard from "./EventCard";
 interface Props {
 	isFeatured?: boolean;
 	city?: string;
 }
 
 const Events = async ({ isFeatured, city }: Props) => {
-	let Event: NextEvent[];
+	let Event: Event[];
 	if (isFeatured) {
+		const events = await prisma.event.findMany({
+			where: {
+				isFeatured: true,
+			},
+		});
 		Event = events.filter((event) => event.isFeatured);
 	} else if (city) {
-		Event = events.filter((event) => event.city.toLowerCase() === city);
+		const events = await prisma.event.findMany({
+			where: {
+				city: {
+					equals: city,
+					mode: "insensitive",
+				},
+			},
+		});
+		Event = events;
 	} else {
+		const events = await prisma.event.findMany();
 		Event = events;
 	}
-
-	await delay(2000);
 
 	return (
 		<div className="mx-auto max-w-2xl px-4 py-8 sm:px-6 sm:py-4 lg:max-w-7xl lg:px-8">

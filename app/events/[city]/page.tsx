@@ -1,7 +1,7 @@
 import Events from "@/app/components/Events";
+import { Metadata } from "next";
 import { Suspense } from "react";
 import Loading from "../loading";
-import { Metadata, ResolvingMetadata } from "next";
 
 interface Props {
 	params: {
