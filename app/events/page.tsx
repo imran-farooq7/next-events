@@ -20,7 +20,7 @@ const EventsPage = ({ searchParams }: Props) => {
 			<h1 className="mb-6 mt-4 text-xl font-bold lg:text-5xl text-white">
 				All Events
 			</h1>
-			<Suspense fallback={<Loading />}>
+			<Suspense key={page} fallback={<Loading />}>
 				<Events isFeatured={false} page={+page} />
 			</Suspense>
 		</main>

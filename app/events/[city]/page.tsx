@@ -31,7 +31,7 @@ const EventsByCityPage = ({ params }: Props) => {
 			<h1 className="mb-6 mt-4 text-xl font-bold lg:text-4xl text-white text-center">
 				Events in <span className="capitalize">{params.city}</span>
 			</h1>
-			<Suspense fallback={<Loading />}>
+			<Suspense key={params.city} fallback={<Loading />}>
 				<Events city={params.city} />
 			</Suspense>
 		</main>
