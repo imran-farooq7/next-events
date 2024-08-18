@@ -3,12 +3,15 @@ import { Event } from "@prisma/client";
 import delay from "delay";
 import Link from "next/link";
 import EventCard from "./EventCard";
+import Pagination from "./Pagination";
 interface Props {
 	isFeatured?: boolean;
 	city?: string;
+	page?: number;
 }
 
-const Events = async ({ isFeatured, city }: Props) => {
+const Events = async ({ isFeatured, city, page = 1 }: Props) => {
+	let totalEvents = await prisma.event.count();
 	let Event: Event[];
 	if (isFeatured) {
 		const events = await prisma.event.findMany({
@@ -28,7 +31,10 @@ const Events = async ({ isFeatured, city }: Props) => {
 		});
 		Event = events;
 	} else {
-		const events = await prisma.event.findMany();
+		const events = await prisma.event.findMany({
+			take: 8,
+			skip: (page - 1) * 8,
+		});
 		Event = events;
 	}
 
@@ -41,6 +47,7 @@ const Events = async ({ isFeatured, city }: Props) => {
 					</Link>
 				))}
 			</div>
+			{!isFeatured && <Pagination page={page} totalEvents={totalEvents} />}
 		</div>
 	);
 };
