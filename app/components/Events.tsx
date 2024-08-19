@@ -60,8 +60,9 @@ const Events = async ({ isFeatured, city, page = 1, myEvents }: Props) => {
 					</Link>
 				))}
 			</div>
-			{!isFeatured ||
-				(myEvents && <Pagination page={page} totalEvents={totalEvents} />)}
+			{isFeatured || myEvents || city ? null : (
+				<Pagination page={page} totalEvents={totalEvents} />
+			)}
 		</div>
 	);
 };
