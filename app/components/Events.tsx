@@ -1,6 +1,6 @@
+import { auth } from "@/auth";
 import prisma from "@/prisma/db";
 import { Event } from "@prisma/client";
-import delay from "delay";
 import Link from "next/link";
 import EventCard from "./EventCard";
 import Pagination from "./Pagination";
@@ -8,9 +8,11 @@ interface Props {
 	isFeatured?: boolean;
 	city?: string;
 	page?: number;
+	myEvents?: boolean;
 }
 
-const Events = async ({ isFeatured, city, page = 1 }: Props) => {
+const Events = async ({ isFeatured, city, page = 1, myEvents }: Props) => {
+	const session = await auth();
 	let totalEvents = await prisma.event.count();
 	let Event: Event[];
 	if (isFeatured) {
@@ -30,6 +32,17 @@ const Events = async ({ isFeatured, city, page = 1 }: Props) => {
 			},
 		});
 		Event = events;
+	} else if (myEvents) {
+		const events = await prisma.user.findMany({
+			where: {
+				id: session?.user?.id,
+			},
+			select: {
+				myEvents: true,
+			},
+		});
+		const { myEvents } = events[0];
+		Event = myEvents;
 	} else {
 		const events = await prisma.event.findMany({
 			take: 8,
@@ -47,7 +60,8 @@ const Events = async ({ isFeatured, city, page = 1 }: Props) => {
 					</Link>
 				))}
 			</div>
-			{!isFeatured && <Pagination page={page} totalEvents={totalEvents} />}
+			{!isFeatured ||
+				(myEvents && <Pagination page={page} totalEvents={totalEvents} />)}
 		</div>
 	);
 };
