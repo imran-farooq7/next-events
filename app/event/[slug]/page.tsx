@@ -4,6 +4,13 @@ import prisma from "@/prisma/db";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { Metadata } from "next/types";
+export async function generateStaticParams() {
+	const events = await prisma.event.findMany();
+
+	return events.map((event) => ({
+		slug: event.slug,
+	}));
+}
 
 interface Props {
 	params: {
