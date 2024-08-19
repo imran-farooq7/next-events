@@ -4,6 +4,11 @@ import { Event } from "@prisma/client";
 import Link from "next/link";
 import EventCard from "./EventCard";
 import Pagination from "./Pagination";
+import {
+	cachedCityEvents,
+	cachedEvents,
+	cachedFeaturedEvents,
+} from "@/lib/helpers";
 interface Props {
 	isFeatured?: boolean;
 	city?: string;
@@ -16,21 +21,10 @@ const Events = async ({ isFeatured, city, page = 1, myEvents }: Props) => {
 	let totalEvents = await prisma.event.count();
 	let Event: Event[];
 	if (isFeatured) {
-		const events = await prisma.event.findMany({
-			where: {
-				isFeatured: true,
-			},
-		});
-		Event = events.filter((event) => event.isFeatured);
+		const events = await cachedFeaturedEvents();
+		Event = events;
 	} else if (city) {
-		const events = await prisma.event.findMany({
-			where: {
-				city: {
-					equals: city,
-					mode: "insensitive",
-				},
-			},
-		});
+		const events = await cachedCityEvents(city);
 		Event = events;
 	} else if (myEvents) {
 		const events = await prisma.user.findMany({
@@ -44,10 +38,7 @@ const Events = async ({ isFeatured, city, page = 1, myEvents }: Props) => {
 		const { myEvents } = events[0];
 		Event = myEvents;
 	} else {
-		const events = await prisma.event.findMany({
-			take: 8,
-			skip: (page - 1) * 8,
-		});
+		const events = await cachedEvents(page);
 		Event = events;
 	}
 
