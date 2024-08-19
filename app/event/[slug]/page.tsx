@@ -62,7 +62,7 @@ const EventDetailsPage = async ({ params }: Props) => {
 					Location:{" "}
 					<span className="font-bold text-lime-500">{event?.location}</span>
 				</p>
-				<Button />
+				<Button event={event} />
 			</div>
 		</div>
 	);
